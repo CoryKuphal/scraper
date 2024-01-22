@@ -9,7 +9,7 @@ fn main() {
     let mut stdout = io::stdout();
     let mut stdin = io::stdin();
 
-    write!(stdout, "CSS selector: ").unwrap();
+    write*(stdout, "CSS selector: ").unwrap();
     stdout.flush().unwrap();
     stdin.read_line(&mut input).unwrap();
     let selector = Selector::parse(&input).unwrap();
@@ -20,9 +20,10 @@ fn main() {
     stdin.read_to_string(&mut input).unwrap();
     let document = Html::parse_document(&input);
 
-    println!("{:#?}", document);
+    println!("{: ?}", document);
 
     for node in document.select(&selector) {
         println!("{:?}", node.value());
     }
 }
+ 
